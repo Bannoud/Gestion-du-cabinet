@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Gynécologue{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.6 -->
+        <link rel="stylesheet" type="text/css" href="{{asset('back/bootstrap/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('back/assets/js/dataTables/dataTables.bootstrap.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('back/assets/css/font-awesome.css')}}">
+        <!-- Theme style -->
+        <link rel="stylesheet" type="text/css" href="{{asset('back/dist/css/AdminLTE.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('back/dist/css/skins/skin-pink.min.css')}}">
+      <!--CSS-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+<!--JS-->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+        </style>
+<!-- ace settings handler -->
+<script type="text/javascript" src="{{ asset('back/assets/js/ace-extra.min.js') }}"></script>
+        <!-- ace styles -->
+<link rel="stylesheet" href="{{asset('back/assets/css/ace.min.css')}}" class="ace-main-stylesheet" id="main-ace-style" />
+<link rel="stylesheet" href="{{asset('back/assets/css/bootstrap.min.css')}}" class="ace-main-stylesheet" id="main-ace-style" />
+<link rel="stylesheet" href="{{asset('back/assets/css/ace-skins.min.css')}}" class="ace-main-stylesheet" id="main-ace-style" />
+<link rel="stylesheet" href="{{asset('back/assets/css/ace-rtl.min.css')}}" class="ace-main-stylesheet" id="main-ace-style" />
+</head>
+<body class="hold-transition skin-pink sidebar-mini">
+<div class="wrapper" style="">
+  <!-- Main Header -->
+  <header class="main-header">
+        <!-- Logo -->
+        <a  class="logo">
+          <!-- mini logo for sidebar mini 50x50 pixels -->
+          <span class="logo-mini"><b>Dr </b> HIND</span>
+          <!-- logo for regular state and mobile devices -->
+           <span class="logo-lg"><b>Dr</b> EL ALAOUI</span>
+        </a>
+
+            <!-- Header Navbar -->
+            <nav class="navbar navbar-static-top" role="navigation">
+              <!-- Sidebar toggle button-->
+              <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+              </a>
+              <!-- Navbar Right Menu -->
+          {% if is_granted('IS_AUTHENTICATED_REMEMBERED')%}
+              <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                  <!-- User Account Menu -->
+                  <li class="dropdown user user-menu">
+                    <!-- Menu Toggle Button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <!-- The user image in the navbar -->
+                      <img src="{{asset('back/dist/img/user2.jpg')}}" class="user-image" alt="User Image">
+                      <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                      <span class="hidden-xs"><b>{{ app.user.username }} </b></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <!-- The user image in the menu -->
+                      <li class="user-header">
+                        <img src="{{asset('back/dist/img/user2.jpg')}}" class="img-circle" alt="User Image">
+                        <p>
+                          <b>Dr</b> EL ALAOUI - Gynécologue obstétricienne
+                          <small>Application réalisé au 2018 </small>
+                        </p>
+                      </li>
+                      <!-- Menu Footer-->
+                      <li class="user-footer">
+                        <div class="pull-left">
+                          <a href="profile.html" class="btn btn-default btn-flat">Profile</a>
+                        </div>
+                        <div class="pull-right">
+                          <a href="{{ path('fos_user_security_logout')}}" class="btn btn-default btn-flat"> <i  class="fa fa-sign-out "></i> {{ 'layout.logout' | trans({}, 'FOSUserBundle') }}</a>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                  
+                </ul>
+              </div>
+             {% else %}
+                  <li><a href="{{ path('fos_user_security_login')}}"> <i  class="fa fa-sign-in fa-2x"></i> {{ 'layout.login' | trans({}, 'FOSUserBundle') }}</a>  </li>
+                  <li><a href="{{ path('fos_user_registration_register')}}"> <i  class="fa fa-user fa-2x"></i> {{ 'layout.register' | trans({}, 'FOSUserBundle') }}</a></li>
+            {% endif %}
+            </nav>
+          
+  </header>
+    <!-- main siderbar -->
+
+<aside class="main-sidebar" >
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="{{asset('back/dist/img/user2.jpg')}}" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <b> <h3>Dr El ALAOUI</h3> <br/>AL ECHCHEIKH HIND </b>
+                <P>Gynécologue obstétricienne</P>
+
+                <!-- Status -->
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+        </div>
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu" >
+            <!-- Optionally, you can add icons to the links -->
+            <li><a href="Accueil_.php"><i  class="fa fa-heartbeat fa-2x"></i> <span style="margin-left: 9%;font-size: 164%;"> Accueil</span></a></li>
+            <li><a href="#"><i  class="fa fa-calendar-check-o fa-2x"></i> <span style="margin-left: 9%;font-size: 164%;"> Rendez-vous</span></a></li>
+            <li><a href="{{path('admin_patient_index')}}"><i class="fa fa-users fa-2x"></i> <span style="margin-left: 9%;font-size: 164%;"> Patient</span></a></li>
+            <li><a href="{{path('charge_index')}}"><i  class="fa fa-hospital-o fa-2x"></i> <span style="margin-left: 9%;font-size: 164%;"> Gestion cabinet</span></a></li>
+            <li><a href="#"><i   class="fa fa-file-excel-o fa-2x"></i> <span style="margin-left: 9%;font-size: 164%;"> Fichier Excel</span></a></li>
+            <li><img src="{{asset('back/dist/img/logo.png')}}" style="width: 63%;margin-left: 24%;margin-right: 24%;margin-top: 5%;"></li>
+            <li class="active" style="position: absolute;width: 100%;bottom: 10px;" ><a href="#"><i class="fa fa-dashboard fa-2x"></i> <span style="margin-left: 9%;font-size: 164%;"> Statistique</span></a></li>
+        </ul>
+        <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+</aside>
+<!-- main siderbar -->
+  <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                      {% block breadcrumb %}{% endblock %}
+                </section>
+                <!-- Main content -->
+                <section class="content ">
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-12"> 
+                          <h1></h1>
+                                  {{  include('alert.html.twig') }}
+                            <div id="app">
+                            
+                                <h1 v-txt="message"></h1>
+                            </div>
+                        </div>
+                         <div class="col-md-12"> 
+                            {% block body %}
+
+                             {% endblock %}
+                       </div>
+                    </div>
+                </section>
+            </div>
+    
+<script type="text/javascript" src="{{ asset('js/vue.min.js')}}"></script>
+          <script >
+              var myApp = new Vue({
+                el:"#app",
+                data:{
+                  message: "ana"
+                }
+              });
+          </script>
+        {% block javascripts %}{% endblock %}
+
+
+
+        <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2018 <a href="http://bannoudfatimaezzahra@gmail.com">bannoudfatimaezzahra@gmail.com</a> </strong> By BANNOUD
+  </footer>
+</div>
+
+<!-- page specific plugin scripts -->
+<script type="text/javascript" src="{{ asset('back/assets/js/jquery-ui.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('back/assets/js/jquery.ui.touch-punch.min.js') }}"></script>
+<!------######------- -->
+<script type="text/javascript" src="{{ asset('back/assets/js/script/date-ovulation.js?v=3') }}"></script>
+
+<!-- jQuery 2.2.3 -->
+<script type="text/javascript" src="{{ asset('back/assets/js/ace.min.js') }}"></script>
+<!-- page specific plugin scripts -->
+<script type="text/javascript" src="{{ asset('back/assets/js/jquery-ui.custom.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('back/assets/js/jquery.ui.touch-punch.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('back/assets/js/markdown.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('back/assets/js/bootstrap-markdown.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('back/assets/js/jquery.hotkeys.index.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('back/assets/js/bootstrap-wysiwyg.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('back/assets/js/bootbox.js') }}"></script>
+
+
+<!-- page specific plugin scripts -->
+<script type="text/javascript" src="{{ asset('back/assets/js/jstree.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+<script type="text/javascript" src="{{ asset('back/assets/js/jquery.dataTables.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('back/assets/js/jquery.dataTables.bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('back/assets/js/dataTables.buttons.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('back/assets/js/buttons.flash.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('back/assets/js/buttons.html5.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('back/assets/js/buttons.print.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('back/assets/js/buttons.colVis.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('back/assets/js/dataTables.select.min.js') }}"></script>
+
+<script type="text/javascript" src="{{ asset('back/assets/js/tree.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('back/assets/js/ace-elements.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('back/assets/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('back/assets/js/jquery-2.1.4.min.js') }}"></script>
+
+<script type="text/javascript" src="{{ asset('back/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+<!-- Bootstrap 3.3.6 -->
+<script type="text/javascript" src="{{ asset('back/bootstrap/js/bootstrap.min.js') }}"></script>
+<!-- App -->
+<script type="text/javascript" src="{{ asset('back/dist/js/app.min.js') }}"></script>
+<script type="text/javascript">
+      if('ontouchstart' in document.documentElement) document.write("<script src='{{ asset('back/assets/js/jquery.mobile.custom.min.js') }}'>"+"<"+"/script>");
+    </script>
+
+    </body>
+</html>

@@ -1,0 +1,1503 @@
+{% extends 'back.html.twig' %} {% block body %}
+<div class="col-md-12">
+    <div class="col-md-5">
+        <div class="box box-widget widget-user">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header btn-pink bg-pink-active" style="    background-color: #ffc0cb!important;border-color: #ffc0cb;">
+                <h3 class="widget-user-username"> {{ patient.nom }} {{ patient.prenom }}</h3>
+                <h5 class="widget-user-desc">Code : {{ patient.code}}</h5>
+            </div>
+            <div class="widget-user-image">
+                <img src="{{ asset('uploads/patients/' ~ patient.image)}}" style="border-radius: 50%;" alt="">
+            </div>
+            <div class="box-footer">
+                <div class="row">
+                    <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                            <h5 class="description-header"><i class="fa fa-clock-o fa-1x"></i> Crée le :</h5>
+                            <span class="description-text">{{ patient.createAt|date('d/m/Y H:i:s') }}</span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                            <h5 class="description-header"><i class="fa fa-clock-o fa-1x"></i> Modifiée le :</h5>
+                            <span class="description-text">{{ patient.updateAt|date('d/m/Y H:i:s') }}</span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4 border-right" style="test-aligne:centre">
+                        <div class="description-block">
+                            <span class="description-header">
+                     <a class="btn btn-app btn-light btn-xs" style="color:pink">
+                        <i class="fa fa-folder-open-o pink"></i>DP
+                      </a>
+                  </span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                <div class="box-body no-padding">
+
+                    <table class="table table-striped">
+                        <tr>
+                            <td>CIN :</td>
+                            <td>{{ patient.cin }}</td>
+                        </tr>
+                        <tr>
+                            <td>Date de Naissance: </td>
+                            <td>{% if patient.datenaissance %}{{ patient.datenaissance|date('d/m/Y H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <td>Lieu de Naissance:</td>
+                            <td>{{ patient.lieunaissance }}</td>
+                        </tr>
+                        <tr>
+                            <td>Adresse:</td>
+                            <td>{{ patient.adresse }}</td>
+                        </tr>
+                        <tr>
+                            <td>Télèphone</td>
+                            <td>{{ patient.tele }}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>{{ patient.email }} </td>
+                        </tr>
+                        <tr>
+                            <td>Etatcivil</td>
+                            <td>{{ patient.etatcivil }}</td>
+                        </tr>
+                        <tr>
+                            <td>Profession</td>
+                            <td>{{ patient.profession }}</td>
+                        </tr>
+                        <tr>
+                            <td>Referent</td>
+                            <td>{{ patient.referent }}</td>
+                        </tr>
+                        <tr>
+                            <td>Type</td>
+                            <td>{{ patient.type }}</td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="box-body padding bg-aqua-active" style="background-color: #ffc0cb!important;border-color: #ffc0cb;">
+                    <div class="row">
+                        <div class="col-md-7"></div>
+                        <div class="col-lg-5">
+                            <a class="btn btn-default" href="{{ path('admin_patient_index') }}">Retour</a>
+
+                            <a class="btn btn-warning" href="{{ path('admin_patient_edit', { 'id': patient.id }) }}">Editer</a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--div class="col-md-7">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#Compte_Rendu" data-toggle="tab" aria-expanded="true">Compte Rendu</a></li>
+              <li class=""><a href="#Bilan" data-toggle="tab" aria-expanded="false">Bilan</a></li>
+              <li class=""><a href="#Régime" data-toggle="tab" aria-expanded="false">Régime</a></li>
+              <li class=""><a href="#Certificat_Medical" data-toggle="tab" aria-expanded="false">Certificat Medical</a></li>
+
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="Compte_Rendu">
+                <!-- Post -->
+
+    <!-- /.post -->
+
+    <!-- Post -->
+
+    <!-- /.post
+
+                
+              </div>
+              <!-- /.tab-pane
+              <div class="tab-pane" id="Bilan">
+                <!-- The timeline 
+                <form class="form-horizontal">
+                  <div class="form-group">
+                    <h1>Bilan</h1>
+                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control" id="inputName" placeholder="Name">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputName" placeholder="Name">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
+
+                    <div class="col-sm-10">
+                      <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-danger">Submit</button>
+                    </div>
+                  </div>
+                </form>
+                 <!-- /.The timeline 
+              </div>
+              <!-- /.tab-pane 
+
+              <div class="tab-pane" id="Régime">
+                <form class="form-horizontal">
+                  <div class="form-group">
+                    <h1>R</h1>
+                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control" id="inputName" placeholder="Name">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputName" placeholder="Name">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
+
+                    <div class="col-sm-10">
+                      <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-danger">Submit</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+               <!-- /.tab-pane
+              <div class="tab-pane" id="Certificat_Medical">
+                <!-- The timeline -->
+    <!-- /.The timeline 
+              </div>
+              <!-- /.tab-pane 
+            </div>
+            <!-- /.tab-content --
+          </div>
+          <!-- /.nav-tabs-custom --
+        </div-->
+
+    <div class="col-sm-6">
+        <div class="widget-box widget-color-pink" style="background-color: #7b1633!important;border-color: #7b1633;test-aligne:centre;">
+            <div class="widget-header">
+              <h1></h1>
+                <h3 class="widget-title lighter smaller ">
+                   <i class="fa fa-user-md" style="color:#ffc0cb;font-size: 145%;"></i> Mon Espace De Travaille
+                    <span class="smaller-80"></span>
+                </h3>
+                  <div class="col-sm-4 border-right" style="test-aligne:centre;float: right;" title="Calculer la grossesse">
+                        <div class="description-block">
+                            <span class="description-header">
+                     <a data-toggle="modal" data-target="#myModal" class="btn btn-app btn-light btn-xs">
+                        <i class="fa fa-calculator pink"></i>DDR
+                      </a>
+                      
+<!-- -->
+<!-- Coelioscopie-->
+    <div class="modal fade" id="myModalC">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">    
+</div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //-  Coelioscopie-->
+<!-- Hysterectomie-->
+    <div class="modal fade" id="myModalHM">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">
+  </div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //-  Hysterectomie-->
+<!-- Myemectonie-->
+    <div class="modal fade" id="myModalM">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">
+         
+  </div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //-  Myemectonie-->
+<!-- Hysteroscopie-->
+    <div class="modal fade" id="myModalHP">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">
+         
+  </div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //-  Hysteroscopie-->
+<!--Cesorienne-->
+    <div class="modal fade" id="myModalCS">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">
+        
+  </div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //- Cesorienne-->
+<!--echographie-->
+    <div class="modal fade" id="myModalE">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">
+         
+  </div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //- echographie-->
+<!--Ballonement Abdominale-->
+    <div class="modal fade" id="myModalBA">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">
+          <p>Date du 1er jour des dernières règles :
+       
+         
+  </div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //- Ballonement Abdominale-->
+<!--Diabitique-->
+    <div class="modal fade" id="myModalD">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">
+         
+  </div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //- Diabitique-->
+<!--Toscoplasmose-->
+    <div class="modal fade" id="myModalT">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">
+         
+  </div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //- Toscoplasmose-->
+<!-- Autre (Libre à écrire et imprimée )-->
+    <div class="modal fade" id="myModalCAt">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+                            <h4 class="header green clearfix">
+                  Bootstrap Lightweight Editor
+                  <span class="block pull-right">
+                    <small class="grey middle">Choose style: &nbsp;</small>
+
+                    <span class="btn-toolbar inline middle no-margin">
+                      <span data-toggle="buttons" class="btn-group no-margin">
+                        <label class="btn btn-sm btn-yellow">
+                          1
+                          <input type="radio" value="1" />
+                        </label>
+
+                        <label class="btn btn-sm btn-yellow active">
+                          2
+                          <input type="radio" value="2" />
+                        </label>
+
+                        <label class="btn btn-sm btn-yellow">
+                          3
+                          <input type="radio" value="3" />
+                        </label>
+
+                        <label class="btn btn-sm btn-yellow">
+                          4
+                          <input type="radio" value="4" />
+                        </label>
+                      </span>
+                    </span>
+                  </span>
+                </h4>
+
+                <div class="wysiwyg-editor" id="editor1"></div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //- Autre (Libre à écrire et imprimée )-->
+<!-- شهادة طبية -->
+    <div class="modal fade" id="myModalCA">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">
+         
+  </div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //- شهادة طبية -->
+<!--Certificat Medicale-->
+    <div class="modal fade" id="myModalCM">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">
+         
+  </div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //-Certificat Medicale-->
+<!--Certificat Veyinite-->
+    <div class="modal fade" id="myModalCV">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">
+         
+  </div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //-Certificat Veyinite-->
+<!--Certificat de grossesse-->
+    <div class="modal fade" id="myModalCDG">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">
+        
+  </div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //-Certificat de grossesse-->
+<!--Radiologie-->
+    <div class="modal fade" id="myModalRad">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">
+         
+  </div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //-Radiologie-->
+<!--Biologie-->
+    <div class="modal fade" id="myModalBio">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">
+         
+  </div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //-Biologie-->
+<!--Pr-->
+    <div class="modal fade" id="myModalPr">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">
+       
+  </div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //-Pr-->
+<!--G-->
+    <div class="modal fade" id="myModalG">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">
+          <p>Date du 1er jour des dernières règles :
+    
+  </div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //-G-->
+<!--F-->
+    <div class="modal fade" id="myModalF">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">
+          
+         
+  </div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //-F-->
+ <!--Autres-->
+    <div class="modal fade" id="myModalAtr">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">
+        
+  </div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //-Autres-->
+       <!--Standard-->
+    <div class="modal fade" id="myModalStd">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date </label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">
+        
+  </div>
+                            <!-- -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //-Standard-->
+       <!--calcul DDR-->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <form role="form" action="" method="post" target="frmCtrl">
+                <!--*******************-->
+                <div class=" panel panel-default" id="interface" style="width: 710px;">
+                    <div class="panel-body" id="bodyInterface" style="width: 710px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <label class="titre"><i class="fa fa-calendar"></i> &nbsp;  Date Ovulation</label>
+                        <br/>
+                        <hr>
+                        <div class="table-responsive">
+                            <!-- -->
+<div id="calcul">
+          <p>Date du 1er jour des dernières règles :
+              <span class="nowrap">
+                  <input type="text" name="date" value="" id="date" style="width:6em" maxlength="10"> 
+                  <span class="input-note">jj/mm/aaaa</span>
+
+              </span >
+          </p>
+          <p>Cycle menstruel :
+                   <select id="cycle" onchange="ajusteCycle();">
+                    <option value="20">20 jours (cycle court)</option>
+                    <option value="21">21 jours</option>
+                    <option value="22">22 jours</option>
+                    <option value="23">23 jours</option>
+                    <option value="24">24 jours</option>
+                    <option value="25">25 jours</option>
+                    <option value="26">26 jours</option>
+                    <option value="27">27 jours</option>
+                    <option value="28" selected>28 jours (cycle moyen)</option>
+                    <option value="29">29 jours</option>
+                    <option value="30">30 jours</option>
+                    <option value="31">31 jours</option>
+                    <option value="32">32 jours</option>
+                    <option value="33">33 jours</option>
+                    <option value="34">34 jours</option>
+                    <option value="35">35 jours (cycle long)</option>
+                  </select>
+          </p>
+          <button type="button" class="btn btn-app btn-pink btn-xs" onclick="buttonCalc();"><i class="fa fa-calculator "></i></button> 
+          <div id="resultat">
+          </div>
+         
+         
+  </div>
+                            <!-- -->
+                        </div>
+                    </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+                </div>
+                <!--*******************-->
+            </form>
+        </div>
+    </div>
+          <!-- //-calcul DDR-->
+
+<!-- -->
+                  </span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main padding-8">
+                    <ul id="tree2" class="tree tree-unselectable tree-folder-select" role="tree">
+                        <li class="tree-branch hide" data-template="treebranch" role="treeitem" aria-expanded="false">
+                            <i class="icon-caret ace-icon tree-plus"></i>&nbsp;
+                            <div class="tree-branch-header tree-plus">
+                                <span class="tree-branch-name">           
+                                          <i class="icon-folder ace-icon fa fa-folder"></i>          
+                                          <span class="tree-label"></span>
+                                </span>
+                            </div>
+                            <ul class="tree-branch-children" role="group"></ul>
+                            <div class="tree-loader hidden" role="alert">
+                                <div class="tree-loading">
+                                    <i class="ace-icon fa fa-refresh fa-spin blue"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="tree-item hide" data-template="treeitem" role="treeitem">
+                            <span class="tree-item-name">                   
+                                      <span class="tree-label"></span>
+                            </span>
+                        </li>
+                        <li class="tree-branch" role="treeitem" aria-expanded="false">
+                            <i class="icon-caret ace-icon tree-plus"></i>&nbsp;
+                            <div class="tree-branch-header">
+                                <span class="tree-branch-name">          
+                                       <i class="icon-folder red ace-icon fa fa-folder"></i>     
+                                          <span class="tree-label">Bilan</span>
+                                </span>
+                            </div>
+                            <ul class="tree-branch-children hidden" role="group">
+                                <li class="tree-branch" role="treeitem" aria-expanded="false">
+                                    <i class="icon-caret ace-icon tree-plus"></i>&nbsp;
+                                    <div class="tree-branch-header">
+                                        <span class="tree-branch-name">           
+                                      <i class="icon-folder ace-icon fa fa-folder pink"></i>            
+                                        <span class="tree-label">Grossese</span>
+                                        </span>
+                                    </div>
+                                    <ul class="tree-branch-children" role="group"></ul>
+                                    <div class="tree-loader " role="alert">
+                                        <div class="tree-loading"><i class="ace-icon fa fa-refresh fa-spin blue"></i>
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="tree-branch" role="treeitem" aria-expanded="false">
+                                        <i class="icon-caret ace-icon tree-plus"></i>&nbsp;
+                                        <div class="tree-branch-header">
+                                            <span class="tree-branch-name">           
+                                      <i class="icon-folder ace-icon fa fa-folder pink"></i>            
+                                       <span class="tree-label">Gynèchologique</span>
+                                            </span>
+                                        </div>
+                                        <ul class="tree-branch-children" role="group"></ul>
+                                        <div class="tree-loader hidden" role="alert">
+                                            <div class="tree-loading"><i class="ace-icon fa fa-refresh fa-spin blue"></i>
+
+                                            </div>
+                                        </div>
+                                    </li>
+                                     <li class="tree-branch" role="treeitem" aria-expanded="false">
+                                        <i class="icon-caret ace-icon tree-plus"></i>&nbsp;
+                                        <div class="tree-branch-header">
+                                            <span class="tree-branch-name">           
+                                <i class="icon-folder ace-icon fa fa-folder pink"></i>            
+                                <span class="tree-label">Prèoperat</span>
+                                            </span>
+                                        </div>
+                                        <ul class="tree-branch-children" role="group"></ul>
+                                        <div class="tree-loader hidden" role="alert">
+                                            <div class="tree-loading"><i class="ace-icon fa fa-refresh fa-spin blue"></i>
+
+                                            </div>
+                                        </div>
+                                    </li>
+                                     <li class="tree-branch" role="treeitem" aria-expanded="false">
+                                        <i class="icon-caret ace-icon tree-plus"></i>&nbsp;
+                                        <div class="tree-branch-header">
+                                            <span class="tree-branch-name">           
+                                <i class="icon-folder ace-icon fa fa-folder pink"></i>            
+                                <span class="tree-label">Standard</span>
+                                            </span>
+                                        </div>
+                                        <ul class="tree-branch-children" role="group"></ul>
+                                        <div class="tree-loader hidden" role="alert">
+                                            <div class="tree-loading"><i class="ace-icon fa fa-refresh fa-spin blue"></i>
+
+                                            </div>
+                                        </div>
+                                    </li>
+                            </ul>
+
+                            <div class="tree-loader hidden" role="alert">
+                                <div class="tree-loading"><i class="ace-icon fa fa-refresh fa-spin blue"></i>
+
+                                </div>
+                            </div>
+                            </li>
+                            <li class="tree-branch" role="treeitem" aria-expanded="false">
+                                <i class="icon-caret ace-icon tree-plus"></i>&nbsp;
+                                <div class="tree-branch-header">
+                                    <span class="tree-branch-name">          
+                                <i class="icon-folder orange ace-icon fa fa-folder"></i>           
+                                 <span class="tree-label">Compte Rendu</span>
+                                    </span>
+                                </div>
+                                <ul class="tree-branch-children hidden" role="group">
+                                    <li class="tree-item" role="treeitem">
+                                        <span class="tree-item-name">                  
+                                 <span class="tree-label"><i class="ace-icon fa fa-Compte Rendu blue"></i> song1.ogg</span> </span>
+                                    </li>
+                                    <li class="tree-item" role="treeitem">
+                                        <span class="tree-item-name">                  
+                                 <span class="tree-label">
+                                  <i class="ace-icon fa fa-Compte Rendu blue"></i> song2.ogg</span>
+                                        </span>
+                                    </li>
+                                    <li class="tree-item" role="treeitem">
+                                        <span class="tree-item-name">                  
+                                   <span class="tree-label"><i class="ace-icon fa fa-Compte Rendu blue"></i> song3.ogg</span> </span>
+                                    </li>
+                                    <li class="tree-item" role="treeitem">
+                                        <span class="tree-item-name">                   
+                                      <span class="tree-label"><i class="ace-icon fa fa-Compte Rendu blue"></i> song4.ogg</span> </span>
+                                    </li>
+                                    <li class="tree-item" role="treeitem"> <span class="tree-item-name">                   <span class="tree-label"><i class="ace-icon fa fa-Compte Rendu blue"></i> song5.ogg</span> </span>
+                                    </li>
+                                </ul>
+                                <div class="tree-loader hidden" role="alert">
+                                    <div class="tree-loading"><i class="ace-icon fa fa-refresh fa-spin blue"></i></div>
+                                </div>
+                            </li>
+                            <li class="tree-branch" role="treeitem" aria-expanded="false"> <i class="icon-caret ace-icon tree-plus"></i>&nbsp;
+                                <div class="tree-branch-header"> <span class="tree-branch-name">           <i class="icon-folder blue ace-icon fa fa-folder"></i>            <span class="tree-label">Regime</span> </span>
+                                </div>
+                                <ul class="tree-branch-children hidden" role="group">
+                                    <li class="tree-item" role="treeitem"> <span class="tree-item-name">                   <span class="tree-label"><i class="ace-icon fa fa-film blue"></i> movie1.avi</span> </span>
+                                    </li>
+                                    <li class="tree-item" role="treeitem"> <span class="tree-item-name">                   <span class="tree-label"><i class="ace-icon fa fa-film blue"></i> movie2.avi</span> </span>
+                                    </li>
+                                    <li class="tree-item" role="treeitem"> <span class="tree-item-name">                   <span class="tree-label"><i class="ace-icon fa fa-film blue"></i> movie3.avi</span> </span>
+                                    </li>
+                                    <li class="tree-item" role="treeitem"> <span class="tree-item-name">                   <span class="tree-label"><i class="ace-icon fa fa-film blue"></i> movie4.avi</span> </span>
+                                    </li>
+                                    <li class="tree-item" role="treeitem"> <span class="tree-item-name">                   <span class="tree-label"><i class="ace-icon fa fa-film blue"></i> movie5.avi</span> </span>
+                                    </li>
+                                </ul>
+                                <div class="tree-loader hidden" role="alert">
+                                    <div class="tree-loading"><i class="ace-icon fa fa-refresh fa-spin blue"></i></div>
+                                </div>
+                            </li>
+                            <li class="tree-branch" role="treeitem" aria-expanded="false"> <i class="icon-caret ace-icon tree-plus"></i>&nbsp;
+                                <div class="tree-branch-header"> <span class="tree-branch-name">           <i class="icon-folder ace-icon fa fa-folder"></i>           <span class="tree-label">Certificat</span> </span>
+                                </div>
+                                <ul class="tree-branch-children" role="group"></ul>
+                                <div class="tree-loader hidden" role="alert">
+                                    <div class="tree-loading"><i class="ace-icon fa fa-refresh fa-spin blue"></i></div>
+                                </div>
+                            </li>
+                            <li class="tree-branch" role="treeitem" aria-expanded="false"> <i class="icon-caret ace-icon tree-plus"></i>&nbsp;
+                                <div class="tree-branch-header"> <span class="tree-branch-name">           <i class="icon-folder ace-icon fa fa-folder green"></i>           <span class="tree-label">Autres</span> </span>
+                                </div>
+                                <ul class="tree-branch-children" role="group"></ul>
+                                <div class="tree-loader hidden" role="alert">
+                                    <div class="tree-loading"><i class="ace-icon fa fa-refresh fa-spin blue"></i></div>
+                                </div>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %} {% block breadcrumb %}
+<ul class="breadcrumb">
+    <li>
+        <a href="#">Accueil</a>
+    </li>
+    <li>
+        <a href="{{ path('admin_patient_index') }}">Liste les Patiens</a>
+    </li>
+    <li class="active">{{ patient.code}}</li>
+</ul>
+{% endblock %} {% block javascripts %}
+
+<script type="text/javascript">
+  jQuery(function($) {
+        var sampleData = initiateDemoData(); 
+        $('#tree2').ace_tree({
+            dataSource: sampleData['dataSource2'],
+            loadingHTML: '<div class="tree-loading"><i class="ace-icon fa fa-refresh fa-spin blue"></i></div>',
+            'open-icon': 'ace-icon fa fa-folder-open',
+            'close-icon': 'ace-icon fa fa-folder',
+            'itemSelect': true,
+            'folderSelect': true,
+            'multiSelect': true,
+            'selected-icon': null,
+            'unselected-icon': null,
+            'folder-open-icon': 'ace-icon tree-plus',
+            'folder-close-icon': 'ace-icon tree-minus'
+        });
+        function initiateDemoData() {
+            var tree_data_2 = {
+                'Bilan': {
+                    text: 'Bilan',
+                    type: 'folder',
+                    'icon-class': 'red'
+                },
+                'Compte Rendu': {
+                    text: 'Compte Rendu',
+                    type: 'folder',
+                    'icon-class': 'orange'
+                },
+                'Regime': {
+                    text: 'Regime',
+                    type: 'folder',
+                    'icon-class': 'blue'
+                },
+                'Certificat': {
+                    text: 'Certificat',
+                    type: 'folder'
+                },
+                'Autres': {
+                    text: 'Autres',
+                    type: 'folder',
+                    'icon-class': 'green'
+                },
+            }
+            tree_data_2['Compte Rendu']['additionalParameters'] = {
+                'children': [{
+                        text: '<span data-toggle="modal" data-target="#myModalE" ><i class="ace-icon fa fa-th-list orange"></i> echographie </span>',
+                        type: 'item'
+                    },
+                    {
+                        text: '<span data-toggle="modal" data-target="#myModalCS" ><i class="ace-icon fa fa-th-list orange"></i> Cesorienne</span>',
+                        type: 'item'
+                    },
+                    {
+                        text: '<span data-toggle="modal" data-target="#myModalHP" ><i class="ace-icon fa fa-th-list orange"></i> Hysteroscopie </span>',
+                        type: 'item'
+                    },
+                    {
+                        text: '<span data-toggle="modal" data-target="#myModalM" ><i class="ace-icon fa fa-th-list orange"></i> Myemectonie </span>',
+                        type: 'item'
+                    },
+                    {
+                        text: '<span data-toggle="modal" data-target="#myModalHM" ><i class="ace-icon fa fa-th-list orange"></i> Hysterectomie </span>',
+                        type: 'item'
+                    },
+                    {
+                        text: '<span data-toggle="modal" data-target="#myModalC" ><i class="ace-icon fa fa-th-list orange"></i> Coelioscopie </span>',
+                        type: 'item'
+                    }
+                ]
+            }
+            tree_data_2['Regime']['additionalParameters'] = {
+                'children': [{
+                        text: '<span data-toggle="modal" data-target="#myModalT" ><i class="ace-icon fa fa-list-alt blue"></i> Toscoplasmose </span>',
+                        type: 'item'
+                    },
+                    {
+                        text: '<span data-toggle="modal" data-target="#myModalD" ><i class="ace-icon fa fa-list-alt blue"></i> Diabitique </span>',
+                        type: 'item'
+                    },
+                    {
+                        text: '<span data-toggle="modal" data-target="#myModalBA" ><i class="ace-icon fa fa-list-alt blue"></i> Ballonement Abdominale </span>',
+                        type: 'item'
+                    }
+                ]
+            }
+            tree_data_2['Bilan']['additionalParameters'] = {
+                'children': {
+                    'Grossese': {
+                        text: 'Grossese',
+                        type: 'folder',
+                        'icon-class': 'pink'
+                    },
+                    'Gynèchologique': {
+                        text: 'Gynèchologique Infertilité',
+                        type: 'folder',
+                        'icon-class': 'pink'
+                    },
+                    'Prèoperat': {
+                        text: 'Prèoperat',
+                        type: 'folder',
+                        'icon-class': 'pink'
+                    },
+                    'Standard': {
+                        text: 'Standard',
+                        type: 'folder',
+                        'icon-class': 'pink'
+                    }
+                }
+            }
+            tree_data_2['Bilan']['additionalParameters']['children']['Grossese']['additionalParameters'] = {
+                 'children': [{
+                        text: '<span data-toggle="modal" data-target="#myModalStd" ><i class="ace-icon fa fa-list-alt red"></i> Standard </span>',
+                        type: 'item'
+                    },
+                    {
+                        text: '<span data-toggle="modal" data-target="#myModalAtr" ><i class="ace-icon fa fa-list-alt red"></i> Autres </span>',
+                        type: 'item'
+                    } 
+                    
+                ]
+            }
+            tree_data_2['Bilan']['additionalParameters']['children']['Gynèchologique']['additionalParameters'] = {
+                'children': [{
+                        text: '<span data-toggle="modal" data-target="#myModalF" ><i class="ace-icon fa fa-bars green"></i> F </span>',
+                        type: 'item'
+                    },
+                    {
+                        text: '<span data-toggle="modal" data-target="#myModalG" ><i class="ace-icon fa fa-bars green"></i> G </span>',
+                        type: 'item'
+                    }
+                ]
+            }
+            tree_data_2['Bilan']['additionalParameters']['children']['Prèoperat']['additionalParameters'] = {
+                'children': [{
+                        text: '<span data-toggle="modal" data-target="#myModalPr" ><i class="ace-icon fa fa-bars pink"></i> Pr </span>',
+                        type: 'item'
+                    }
+                ]
+            }
+            tree_data_2['Bilan']['additionalParameters']['children']['Standard']['additionalParameters'] = {
+                'children': [{
+                        text: '<span data-toggle="modal" data-target="#myModalBio" ><i class="ace-icon fa fa-list red"></i> Biologique </span>',
+                        type: 'item'
+                    },
+                    {
+                        text: '<span data-toggle="modal" data-target="#myModalRad" ><i class="ace-icon fa fa-list red"></i> Radiologique </span>',
+                        type: 'item'
+                    }
+                ]
+            }
+            tree_data_2['Certificat']['additionalParameters'] = {
+                'children': [{
+                        text: '<span data-toggle="modal" data-target="#myModalCDG" ><i class="ace-icon fa fa-archive "></i> Certificat De Grossese </span>',
+                        type: 'item'
+                    },
+                    {
+                        text: '<span data-toggle="modal" data-target="#myModalCV" ><i class="ace-icon fa fa-archive "></i> Certificat Veyinite </span>',
+                        type: 'item'
+                    },
+                    {
+                        text: '<span data-toggle="modal" data-target="#myModalCM" ><i class="ace-icon fa fa-archive "></i> Certificat Medicale </span>',
+                        type: 'item'
+                    },
+                    {
+                        text: '<span data-toggle="modal" data-target="#myModalCA" ><i class="ace-icon fa fa-archive "></i> شهادة طبية </span>',
+                        type: 'item'
+                    }
+                ]
+            }
+            tree_data_2['Autres']['additionalParameters'] = {
+                'children': [{
+                        text: '<span data-toggle="modal" data-target="#myModalCAt" ><i class="ace-icon fa fa-file-text red"></i> Autre (Libre à écrire et imprimée ) </span>',
+                        type: 'item'
+                    }
+                ]
+            }
+            var dataSource2 = function(options, callback) {
+                var $data = null
+                if (!("text" in options) && !("type" in options)) {
+                    $data = tree_data_2; 
+                    callback({
+                        data: $data
+                    });
+                    return;
+                } else if ("type" in options && options.type == "folder") {
+                    if ("additionalParameters" in options && "children" in options.additionalParameters)
+                        $data = options.additionalParameters.children || {};
+                    else $data = {} 
+                }
+
+                if ($data != null) 
+                    setTimeout(function() {
+                        callback({
+                            data: $data
+                        });
+                    }, parseInt(Math.random() * 500) + 200);
+
+            }
+
+
+            return {
+                'dataSource2': dataSource2
+            }
+        }
+/**/
+  $('textarea[data-provide="markdown"]').each(function(){
+        var $this = $(this);
+
+    if ($this.data('markdown')) {
+      $this.data('markdown').showEditor();
+    }
+    else $this.markdown()
+    
+    $this.parent().find('.btn').addClass('btn-white');
+  });
+  function showErrorAlert (reason, detail) {
+    var msg='';
+    if (reason==='unsupported-file-type') { msg = "Unsupported format " +detail; }
+    else {
+      //console.log("error uploading file", reason, detail);
+    }
+    $('<div class="alert"> <button type="button" class="close" data-dismiss="alert">&times;</button>'+ 
+     '<strong>File upload error</strong> '+msg+' </div>').prependTo('#alerts');
+  }
+
+  $('#editor1').ace_wysiwyg();//this will create the default editor will all buttons
+  //but we want to change a few buttons colors for the third style
+  $('#editor1').ace_wysiwyg({
+    toolbar:
+    [
+      'font',
+      null,
+      'fontSize',
+      null,
+      {name:'bold', className:'btn-info'},
+      {name:'italic', className:'btn-info'},
+      {name:'strikethrough', className:'btn-info'},
+      {name:'underline', className:'btn-info'},
+      null,
+      {name:'insertunorderedlist', className:'btn-success'},
+      {name:'insertorderedlist', className:'btn-success'},
+      {name:'outdent', className:'btn-purple'},
+      {name:'indent', className:'btn-purple'},
+      null,
+      {name:'justifyleft', className:'btn-primary'},
+      {name:'justifycenter', className:'btn-primary'},
+      {name:'justifyright', className:'btn-primary'},
+      {name:'justifyfull', className:'btn-inverse'},
+      null,
+      {name:'createLink', className:'btn-pink'},
+      {name:'unlink', className:'btn-pink'},
+      null,
+      {name:'insertImage', className:'btn-success'},
+      null,
+      'foreColor',
+      null,
+      {name:'undo', className:'btn-grey'},
+      {name:'redo', className:'btn-grey'}
+    ],
+    'wysiwyg': {
+      fileUploadError: showErrorAlert
+    }
+  }).prev().addClass('wysiwyg-style2');
+  $('[data-toggle="buttons"] .btn').on('click', function(e){
+    var target = $(this).find('input[type=radio]');
+    var which = parseInt(target.val());
+    var toolbar = $('#editor1').prev().get(0);
+    if(which >= 1 && which <= 4) {
+      toolbar.className = toolbar.className.replace(/wysiwyg\-style(1|2)/g , '');
+      if(which == 1) $(toolbar).addClass('wysiwyg-style1');
+      else if(which == 2) $(toolbar).addClass('wysiwyg-style2');
+      if(which == 4) {
+        $(toolbar).find('.btn-group > .btn').addClass('btn-white btn-round');
+      } else $(toolbar).find('.btn-group > .btn-white').removeClass('btn-white btn-round');
+    }
+  });
+  //RESIZE IMAGE
+  
+  //Add Image Resize Functionality to Chrome and Safari
+  //webkit browsers don't have image resize functionality when content is editable
+  //so let's add something using jQuery UI resizable
+  //another option would be opening a dialog for user to enter dimensions.
+  if ( typeof jQuery.ui !== 'undefined' && ace.vars['webkit'] ) {
+    
+    var lastResizableImg = null;
+    function destroyResizable() {
+      if(lastResizableImg == null) return;
+      lastResizableImg.resizable( "destroy" );
+      lastResizableImg.removeData('resizable');
+      lastResizableImg = null;
+    }
+
+    var enableImageResize = function() {
+      $('.wysiwyg-editor')
+      .on('mousedown', function(e) {
+        var target = $(e.target);
+        if( e.target instanceof HTMLImageElement ) {
+          if( !target.data('resizable') ) {
+            target.resizable({
+              aspectRatio: e.target.width / e.target.height,
+            });
+            target.data('resizable', true);
+            
+            if( lastResizableImg != null ) {
+              //disable previous resizable image
+              lastResizableImg.resizable( "destroy" );
+              lastResizableImg.removeData('resizable');
+            }
+            lastResizableImg = target;
+          }
+        }
+      })
+      .on('click', function(e) {
+        if( lastResizableImg != null && !(e.target instanceof HTMLImageElement) ) {
+          destroyResizable();
+        }
+      })
+      .on('keydown', function() {
+        destroyResizable();
+      });
+      }
+
+    enableImageResize();
+
+    /**
+    //or we can load the jQuery UI dynamically only if needed
+    if (typeof jQuery.ui !== 'undefined') enableImageResize();
+    else {//load jQuery UI if not loaded
+      //in Ace demo ./components will be replaced by correct components path
+      $.getScript("assets/js/jquery-ui.custom.min.js", function(data, textStatus, jqxhr) {
+        enableImageResize()
+      });
+    }
+    */
+  }
+    
+});
+</script>
+{% endblock %}

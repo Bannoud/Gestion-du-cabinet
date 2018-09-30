@@ -1,0 +1,32 @@
+{% extends 'back.html.twig' %}
+
+{% block body %}
+    <h1><i class="fa fa-money pink"></i> Ajout Des Charges</h1>
+
+    {{ form_start(form) }}
+        <div class="box box-primary">
+            <div class="box-header with-border">
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-xs-3">
+                   {{ form_row(form.nom,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="col-xs-3">
+                  {{ form_row(form.prix,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="col-xs-3">
+                  {{ form_row(form.date,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="col-xs-3">
+                 <button class="btn btn-primary" type="submit"><i class="ace-icon fa fa-floppy-o bigger-120 "></i> Enregistrer</button>
+                  <a class="btn btn-default" href="{{ path('charge_index') }}"><i class="ace-icon fa fa-reply icon-only"></i> Retour</a> 
+                </div>
+              </div>
+            </div>
+        </div>
+        
+    {{ form_end(form) }}
+
+   
+{% endblock %}

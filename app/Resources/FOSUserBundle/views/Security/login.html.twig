@@ -1,0 +1,38 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_content %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				{{ include('@FOSUser/Security/login_content.html.twig') }}
+			</div>
+			<div class="social-or-login center">
+				<span class="bigger-110">Or Login Using</span>
+			</div>
+			<div class="space-6"></div>
+			<div class="social-login center">
+												<a class="btn btn-primary">
+													<i class="ace-icon fa fa-facebook"></i>
+												</a>
+
+												<a class="btn btn-info">
+													<i class="ace-icon fa fa-twitter"></i>
+												</a>
+
+												<a class="btn btn-danger">
+													<i class="ace-icon fa fa-google-plus"></i>
+												</a>
+			</div>
+		</div>
+	</div>					
+                <div class="toolbar clearfix" style="width: 54%;box-shadow: 2px 3px;">
+                      <div>
+                        <a href="{{ path('fos_user_registration_register')}}" data-target="#signup-box" class="user-signup-link">
+                          {{ 'layout.register' | trans({}, 'FOSUserBundle') }}
+                          <i class="ace-icon fa fa-arrow-right"></i>
+                        </a>
+                      </div>
+                </div>
+   </div> 
+{% endblock fos_user_content %}

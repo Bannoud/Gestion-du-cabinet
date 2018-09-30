@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Gynécologue{% endblock %}</title>
+        {% block stylesheets %}
+                  <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.6 -->
+        <link rel="stylesheet" type="text/css" href="{{asset('back/bootstrap/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('back/assets/js/dataTables/dataTables.bootstrap.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('back/assets/css/font-awesome.css')}}">
+        <!-- Theme style -->
+        <link rel="stylesheet" type="text/css" href="{{asset('back/dist/css/AdminLTE.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('back/dist/css/skins/skin-pink.min.css')}}">
+      <!--CSS-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+        <!--JS-->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+                </style>
+        <!-- ace settings handler -->
+        <script type="text/javascript" src="{{ asset('back/assets/js/ace-extra.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('back/assets/js/modernizr.custom.js') }}"></script>
+
+                <!-- ace styles -->
+        <link rel="stylesheet" href="{{asset('back/assets/css/ace.min.css')}}" class="ace-main-stylesheet" id="main-ace-style" />
+        <link rel="stylesheet" href="{{asset('back/assets/css/bootstrap.min.css')}}" class="ace-main-stylesheet" id="main-ace-style" />
+        <link rel="stylesheet" href="{{asset('back/assets/css/ace-skins.min.css')}}" class="ace-main-stylesheet" id="main-ace-style" />
+        <link rel="stylesheet" href="{{asset('back/assets/css/ace-rtl.min.css')}}" class="ace-main-stylesheet" id="main-ace-style" />
+
+        <link rel="stylesheet" href="{{asset('back/assets/css/normalize.css')}}" class="ace-main-stylesheet" id="main-ace-style" />
+        <link rel="stylesheet" href="{{asset('back/assets/css/demo.css')}}" class="ace-main-stylesheet" id="main-ace-style" />
+        <link rel="stylesheet" href="{{asset('back/assets/css/icons.css')}}" class="ace-main-stylesheet" id="main-ace-style" />
+        <link rel="stylesheet" href="{{asset('back/assets/css/component.css')}}" class="ace-main-stylesheet" id="main-ace-style" />
+
+         
+                  <style type="text/css">
+                    body{
+                      background-image: url("{{asset('back/dist/img/back.jpg')}}");
+                    }
+                    .login-container{
+                            width: 520%;
+                            text-align: center;
+                            margin-top: 40%;
+                            box-shadow: 3px 3px 12px;
+                            text-shadow: 1px 1px #232329;
+                    }
+                  </style>
+        {% endblock %}
+    </head>
+    <body >
+  <!-- Content Wrapper. Contains page content -->
+       
+                <!-- Main content -->
+      <div class="col-sm-2 col-sm-offset-1">
+          <div class="login-container">
+                <section class="login-box visible widget-box no-border">
+              <div class=""  style="">
+                 
+                                    {% block content %}{% endblock %}
+                  
+                </section>
+        </div>
+      </div>
+        {% block javascripts %}
+              <!-- jQuery 2.2.3 -->
+              <script type="text/javascript" src="{{ asset('back/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+              <!-- Bootstrap 3.3.6 -->
+              <script type="text/javascript" src="{{ asset('back/bootstrap/js/bootstrap.min.js') }}"></script>
+              <!-- App -->
+              <script type="text/javascript" src="{{ asset('back/dist/js/app.min.js') }}"></script>
+
+<script type="text/javascript" src="{{ asset('back/assets/js/classie.js') }}"></script>
+<script type="text/javascript" src="{{ asset('back/assets/js/sidebarEffects.js') }}"></script>
+
+        {% endblock %}
+
+
+    </body>
+</html>

@@ -1,0 +1,95 @@
+{% extends 'back.html.twig' %}
+
+{% block body %}
+{{ form_start(edit_form) }}
+<div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Edition de Patient</h3>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-xs-3">
+                   {{ form_row(edit_form.cin,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="col-xs-4">
+                  {{ form_row(edit_form.prenom,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="col-xs-5">
+                   {{ form_row(edit_form.image,{'required':false,'attr':{'class':'form-control'}}) }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-3">
+                    {{ form_row(edit_form.nom,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="col-xs-4">
+                  {{ form_row(edit_form.datenaissance,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="col-xs-5">
+                   {{ form_row(edit_form.lieunaissance,{'attr':{'class':'form-control'}}) }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-3">
+                    {{ form_row(edit_form.adresse,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="col-xs-4">
+                  {{ form_row(edit_form.tele,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="col-xs-5">
+                   {{ form_row(edit_form.email,{'attr':{'class':'form-control'}}) }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-3">
+                    {{ form_row(edit_form.etatcivil,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="col-xs-4">
+                  {{ form_row(edit_form.profession,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="col-xs-5">
+                    {{ form_row(edit_form.referent,{'attr':{'class':'form-control'}}) }}
+                </div>
+              </div>
+               <div class="row">
+                <div class="col-xs-3">
+                  {{ form_row(edit_form.metuelles,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="col-xs-4">
+                  {{ form_row(edit_form.type,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="col-xs-5">
+                    {{ form_row(edit_form.code,{'attr':{'class':'form-control'}}) }}
+                </div>
+              </div>
+              <div class="row">
+                 <div class="col-xs-4">
+                </div>
+                <div class="col-xs-4" style="text-align: center;">
+                     <hr>
+                  <button class="btn btn-danger" type="submit" ><i class="fa fa-edit"></i> Editer</button>
+                  <a class="btn btn-default" href="{{ path('admin_patient_index') }}"><i class="ace-icon fa fa-reply icon-only"></i> Retour</a>
+                </div>
+                <div class="col-xs-4">
+                  
+                </div>
+                 
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+
+   
+    {{ form_end(edit_form) }}
+{% endblock %}
+{% block breadcrumb %}
+<ul class="breadcrumb">
+    <li>
+        <a href="#">Accueil</a>
+    </li>
+    <li>
+        <a href="{{ path('admin_patient_index') }}">Liste les Patiens</a>
+    </li>
+    <li class="active">Edition de Patient</li>
+</ul>  
+{% endblock %}

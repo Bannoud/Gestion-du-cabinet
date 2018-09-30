@@ -1,0 +1,115 @@
+{% extends 'back.html.twig' %}
+{% block body %}
+    <h3><i class="fa fa-address-card pink"></i> Nouvelle Patient </h3>
+{{ form_start(form) }}
+  <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title "><i class="fa fa-edit pink"></i> Ajoute de Patient</h3>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-xs-3">
+                   {{ form_row(form.cin,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="col-xs-4">
+                  {{ form_row(form.prenom,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="col-xs-4">
+                  {{ form_row(form.nom,{'attr':{'class':'form-control'}}) }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-3">
+                  <span class="input-icon input-icon-right">
+                         {{ form_row(form.image,{'required':false,'attr':{'class':'form-control'}}) }}
+                        <i class="ace-icon fa fa-camera pink"></i>
+                      </span>
+                </div>
+                <div class="col-xs-2">
+                   <span class="input-icon input-icon-right">
+                          {{ form_row(form.datenaissance,{'attr':{'class':'form-control'}}) }}   
+                        <i class="ace-icon fa fa-calendar pink"></i>
+                      </span>
+                </div>
+                <div class="col-xs-2">
+                   <span class="input-icon input-icon-right">
+                          {{ form_row(form.lieunaissance,{'attr':{'class':'form-control'}}) }}  
+                        <i class="ace-icon fa fa-globe pink"></i>
+                      </span>
+                </div>
+                <div class="col-xs-2">
+                  <span class="input-icon input-icon-right">
+                         {{ form_row(form.tele,{'attr':{'class':'form-control'}}) }}                        
+                         <i class="ace-icon fa fa-phone pink"></i>
+                  </span>
+                </div>
+                <div class="col-xs-2">
+                  <span class="input-icon input-icon-right">
+                         {{ form_row(form.code,{'attr':{'class':'form-control'}}) }} 
+                          <i class="ace-icon fa fa-qrcode pink"></i>            
+                 </span>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-3">
+                          {{ form_row(form.adresse,{'attr':{'class':'form-control'}}) }} 
+          
+                </div>
+                <div class="col-xs-3">
+                   {{ form_row(form.referent,{'attr':{'class':'form-control'}}) }}
+                 
+                </div>
+                <div class="col-xs-3">
+                  <span class="input-icon input-icon-right">
+                        {{ form_row(form.email,{'attr':{'class':'form-control'}}) }}                        
+                         <i class="ace-icon fa fa-at pink"></i>                
+                 </span>
+                </div>
+                <div class="col-xs-2">
+                        {{ form_row(form.profession,{'attr':{'class':'form-control'}}) }}               
+            
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-3">
+                    {{ form_row(form.etatcivil,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="col-xs-4">
+                   {{ form_row(form.type,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="col-xs-5">
+                    {{ form_row(form.metuelles,{'attr':{'class':'form-control'}}) }}
+                 <input  class="btn btn-primary btn-block" href="{{ path('admin_metuele_new') }}" value="+" />
+                 
+                </div>
+              </div>
+              <div class="row">
+                 <div class="col-xs-4">
+                </div>
+                <div class="col-xs-4" style="text-align: center;">
+                     <hr>
+                  <button class="btn btn-primary" type="submit"><i class="ace-icon fa fa-floppy-o bigger-120 "></i> Enregistrer</button>
+                  <a class="btn btn-default" href="{{ path('admin_patient_index') }}"><i class="ace-icon fa fa-reply icon-only"></i> Retour</a> 
+                </div>
+                <div class="col-xs-4">
+                  
+                </div>
+                 
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+{{ form_end(form) }}
+{% endblock %}
+{% block breadcrumb %}
+<ul class="breadcrumb">
+    <li>
+        <a href="#">Accueil</a>
+    </li>
+    <li>
+        <a href="{{ path('admin_patient_index') }}">Liste les Patiens</a>
+    </li>
+    <li class="active">Novelle Patient</li>
+</ul> 
+{% endblock %}

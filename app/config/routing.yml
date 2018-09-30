@@ -1,0 +1,19 @@
+patient_charge:
+    resource: "@PatientBundle/Controller/ChargeController.php"
+    type:     annotation
+
+charges:
+    resource: "@ChargesBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+patient:
+    resource: "@PatientBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

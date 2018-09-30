@@ -1,0 +1,42 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+<label class="block clearfix">
+    <span class="block input-icon input-icon-right">
+      {{ form_row(form.email,{'attr': {'class': 'form-control'}}) }}
+      <i class="ace-icon fa fa-envelope"></i>
+    </span>
+</label>
+<label class="block clearfix">
+    <span class="block input-icon input-icon-right">
+        {{ form_row(form.username,{'attr': {'class': 'form-control'}}) }} 
+        <i class="ace-icon fa fa-user"></i>
+    </span>
+</label>
+<label class="block clearfix">
+    <span class="block input-icon input-icon-right">
+        {{ form_row(form.plainPassword.first,{'attr': {'class': 'form-control'}}) }}                                      
+        <i class="ace-icon fa fa-lock"></i>
+    </span>
+</label>
+<label class="block clearfix">
+    <span class="block input-icon input-icon-right">
+        {{ form_row(form.plainPassword.second,{'attr': {'class': 'form-control'}}) }}
+        <i class="ace-icon fa fa-retweet"></i>
+    </span>
+</label>
+	<div class="space-24"></div>
+    <div class="clearfix">
+        <button type="reset" class="width-30 pull-left btn btn-sm">
+            <i class="ace-icon fa fa-refresh"></i>
+            <span class="bigger-110">Reset</span>
+        </button>
+        <button type="submit" value="{{ 'registration.submit'|trans }}" class="width-65 pull-right btn btn-sm btn-success">
+            <span class="bigger-110">Register</span>
+            <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+        </button>
+    </div>
+    
+{{ form_end(form) }}
+

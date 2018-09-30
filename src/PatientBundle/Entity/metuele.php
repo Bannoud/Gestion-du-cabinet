@@ -1,0 +1,65 @@
+<?php
+
+namespace PatientBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * metuele
+ *
+ * @ORM\Table(name="metuele")
+ * @ORM\Entity(repositoryClass="PatientBundle\Repository\metueleRepository")
+ */
+class metuele
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="societe", type="string", length=100)
+     */
+    private $societe;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set societe
+     *
+     * @param string $societe
+     *
+     * @return metuele
+     */
+    public function setSociete($societe)
+    {
+        $this->societe = $societe;
+
+        return $this;
+    }
+
+    /**
+     * Get societe
+     *
+     * @return string
+     */
+    public function getSociete()
+    {
+        return $this->societe;
+    }
+}

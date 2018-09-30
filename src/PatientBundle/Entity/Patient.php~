@@ -1,0 +1,541 @@
+<?php
+
+namespace PatientBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+use Symfony\Component\Validator\Constraints as Assert;
+/**
+ * Patient
+ *
+ * @ORM\Table(name="patient")
+ * @ORM\Entity(repositoryClass="PatientBundle\Repository\PatientRepository")
+ */
+class Patient
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cin", type="string", length=120, unique=true)
+     */
+    private $cin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=120)
+     *Assert\NotBlank(groups="{"new"},message="Merci de mettre une image")
+     *Assert\file(mimeTypes={"image/png","image/jpeg"})
+     */
+    private $image;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=120)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=120)
+     */
+    private $nom;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datenaissance", type="datetime")
+     */
+    private $datenaissance;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lieunaissance", type="string", length=120)
+     */
+    private $lieunaissance;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=255, nullable=true)
+     */
+    private $adresse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tele", type="string", nullable=true)
+     */
+    private $tele;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=120, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etatcivil", type="string", length=120, nullable=true)
+     */
+    private $etatcivil;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="profession", type="string", length=120, nullable=true)
+     */
+    private $profession;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="referent", type="string", length=255, nullable=true)
+     */
+    private $referent;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=100, nullable=true)
+     */
+    private $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="code", type="string", length=100, nullable=true)
+     */
+    private $code;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="create_at", type="datetime", nullable=true)
+     */
+    private $createAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="update_at", type="datetime", nullable=true)
+     */
+    private $updateAt;
+
+    /**
+     * 
+     *
+     * @ORM\ManyToMany(targetEntity="PatientBundle\Entity\metuele")
+     */
+    private $metuelles;
+
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set cin
+     *
+     * @param string $cin
+     *
+     * @return Patient
+     */
+    public function setCin($cin)
+    {
+        $this->cin = $cin;
+
+        return $this;
+    }
+
+    /**
+     * Get cin
+     *
+     * @return string
+     */
+    public function getCin()
+    {
+        return $this->cin;
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     *
+     * @return Patient
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Patient
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set datenaissance
+     *
+     * @param \DateTime $datenaissance
+     *
+     * @return Patient
+     */
+    public function setDatenaissance($datenaissance)
+    {
+        $this->datenaissance = $datenaissance;
+
+        return $this;
+    }
+
+    /**
+     * Get datenaissance
+     *
+     * @return \DateTime
+     */
+    public function getDatenaissance()
+    {
+        return $this->datenaissance;
+    }
+
+    /**
+     * Set lieunaissance
+     *
+     * @param string $lieunaissance
+     *
+     * @return Patient
+     */
+    public function setLieunaissance($lieunaissance)
+    {
+        $this->lieunaissance = $lieunaissance;
+
+        return $this;
+    }
+
+    /**
+     * Get lieunaissance
+     *
+     * @return string
+     */
+    public function getLieunaissance()
+    {
+        return $this->lieunaissance;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     *
+     * @return Patient
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set tele
+     *
+     * @param integer $tele
+     *
+     * @return Patient
+     */
+    public function setTele($tele)
+    {
+        $this->tele = $tele;
+
+        return $this;
+    }
+
+    /**
+     * Get tele
+     *
+     * @return int
+     */
+    public function getTele()
+    {
+        return $this->tele;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Patient
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set etatcivil
+     *
+     * @param string $etatcivil
+     *
+     * @return Patient
+     */
+    public function setEtatcivil($etatcivil)
+    {
+        $this->etatcivil = $etatcivil;
+
+        return $this;
+    }
+
+    /**
+     * Get etatcivil
+     *
+     * @return string
+     */
+    public function getEtatcivil()
+    {
+        return $this->etatcivil;
+    }
+
+    /**
+     * Set profession
+     *
+     * @param string $profession
+     *
+     * @return Patient
+     */
+    public function setProfession($profession)
+    {
+        $this->profession = $profession;
+
+        return $this;
+    }
+
+    /**
+     * Get profession
+     *
+     * @return string
+     */
+    public function getProfession()
+    {
+        return $this->profession;
+    }
+
+    /**
+     * Set referent
+     *
+     * @param string $referent
+     *
+     * @return Patient
+     */
+    public function setReferent($referent)
+    {
+        $this->referent = $referent;
+
+        return $this;
+    }
+
+    /**
+     * Get referent
+     *
+     * @return string
+     */
+    public function getReferent()
+    {
+        return $this->referent;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return Patient
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set code
+     *
+     * @param string $code
+     *
+     * @return Patient
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Set createAt
+     *
+     * @param \DateTime $createAt
+     *
+     * @return Patient
+     */
+    public function setCreateAt($createAt)
+    {
+        $this->createAt = $createAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createAt
+     *
+     * @return \DateTime
+     */
+    public function getCreateAt()
+    {
+        return $this->createAt;
+    }
+
+    /**
+     * Set updateAt
+     *
+     * @param \DateTime $updateAt
+     *
+     * @return Patient
+     */
+    public function setUpdateAt($updateAt)
+    {
+        $this->updateAt = $updateAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updateAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdateAt()
+    {
+        return $this->updateAt;
+    }
+
+      /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Patient
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+}
